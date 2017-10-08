@@ -1,0 +1,50 @@
+<!--footer.html-->
+{% block footer %}
+    <p  >本内容来自网络，如有侵权请来信通知下架……</p>
+    <hr>
+    <p>
+        Hi,I am Skyge.Nice to meet you!
+    </p>
+    <em>
+        今日佳句：{{ qoute }}
+    </em>
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    <!-- kill the Facebook and Weibo -->
+                    <li>
+                        <a href={% url 'rss' %}>
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/Skyge">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="http://weibo.com/u/3227090323">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse" ></i>
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+                <p class="copyright text-muted">
+                &copy; 2017  <span class="glyphicon glyphicon-heart"></span> Skyge ❖ Powered by Hanyang.
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+{% endblock %}
+

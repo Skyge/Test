@@ -1,0 +1,37 @@
+<!--tags.html-->
+{% extends 'base.html' %}
+{% load blog_tags %}
+
+
+{% block background %}
+<header class="intro-header" style="background-image: url('/static/images/tags.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="site-heading">
+                    <h1>我的征程是星辰大海</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+{% endblock background %}
+
+{% block content %}
+    <div class="widget widget-tag-cloud">
+        <h3 class="widget-title">标签云</h3>
+        {% get_tags as tag_list %}
+        <ul>
+            {% for tag in tag_list %}
+                <li>
+                    <a href="{% url 'blog:tag' tag.pk %}">{{ tag.name }}
+                        <span class="post-count">({{ tag.num_posts }})</span>
+                    </a>
+                </li>
+            {% empty %}
+                暂无标签！
+            {% endfor %}
+        </ul>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,60 @@
+<!--post.html-->
+{% extends 'base.html' %}
+{% block title %} {{ post.title }} - 文学天地 {% endblock %}
+{% block headmessage %}
+    <h3 style="font-family:微软雅黑;">{{ post.title }}</h3>
+{% endblock %}
+{% block content %}
+    <p style="font-family:微软雅黑;font-size:14pt;font-weight: bold">
+        {{ post.text | safe }}
+    </p>
+    <section class="comment-area" id="comment-area">
+        <hr>
+        <h3>发表评论</h3>
+        <form action="{% url 'comments:post_comment' post.pk %}" method="post" class="comment-form">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="{{ form.name.id_for_label }}">名字：</label>
+{#                    <input id="id_name" maxlength="100" name="name" type="text" required>#}
+                    {{ form.name }}
+                </div>
+                <div class="col-md-6">
+                    <label for="{{ form.email.id_for_label }}">邮箱：</label>
+{#                    <input id="id_name" maxlength="100" name="name" type="text" required>#}
+                    {{ form.email }}
+                </div>
+                <div class="col-md-12">
+                    <label for="{{ form.text.id_for_label }}">评论：</label>
+{#                    <textarea cols="40" id="id_text" name="text" rows="10" required=""></textarea>#}
+                    {{ form.text }}
+                    <br />
+                    <button type="submit" class="comment-btn">发表</button>
+                </div>
+            </div>    <!-- row -->
+        </form>
+        <div class="comment-list-panel">
+                <h3>评论列表，共 <span>{{ post.comment_set.count }}</span> 条评论</h3>
+                <ul class="comment-list list-unstyled">
+                    {% for comment in comment_list %}
+                        <li class="comment-item">
+                            <span class="nickname">{{ comment.name }}</span>
+                            <time class="submit-date"
+                                  datetime="{{ comment.created_time }}">{{ comment.created_time }}</time>
+                            <div class="text">
+                                {{ comment.text }}
+                            </div>
+                        </li>
+                    {% empty %}
+                        暂无评论
+                    {% endfor %}
+                </ul>
+        </div>
+        <div class="entry-meta">
+        <span class="views-count">
+            <a href="{{ post.get_absolute_url }}">本页总访问量{{ post.views }}次</a>
+        </span>
+    </div>
+    </section>
+
+{% endblock %}

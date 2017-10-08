@@ -1,0 +1,200 @@
+{% load staticfiles %}
+{% load blog_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="一入编程深似海">
+    <meta name="author" content="Skyge">
+    <title>Skyge's World</title>
+    <link rel="canonical" href="http://skyge.site/">
+    <!-- Icons -->
+    <link rel="shortcut icon" href="/static/favicon.ico">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+    <!-- Custom styles for this template -->
+    <link  rel="stylesheet" href="/static/css/clean-blog.css" >
+
+{#    <link rel="stylesheet" href="{%  static 'css/highlights/github.css' %}">#}
+
+    <link rel="stylesheet" href="/static/css/syntax.css">
+        <!-- Custom Fonts -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+{#    <link href="/static/css/font_awesome/font_awesome_min.css" rel="stylesheet" type="text/css">#}
+    <link href='/static/css/font_awesome/css_family1.css' rel='stylesheet' type='text/css'>
+    <link href='/static/css/font_awesome/css_family2.css' rel='stylesheet' type='text/css'>
+
+    <style>
+        span.highlighted {
+            color: red;
+        }
+    </style>
+
+
+<body ontouchstart="">
+    <!-- Navigation -->
+    {% include 'header.html' %}
+
+    <!-- Page Header -->
+    {% block background %} {% endblock background %}
+
+    <link rel="stylesheet" href="/static/css/backtop.css">  <!-- Back Top -->
+    <script type="text/javascript" src="/static/js/backtop.js"></script>  <!-- Back Top -->
+
+    <div id="back-top">
+      <a href="#top" title="回到顶部"></a>
+    </div>
+    <!-- Main Content -->
+    <div class="container">
+	    <div class="row">
+		    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-preview">
+                    <div>
+                        {% block main %} {% endblock main %}
+                    </div>
+                    <h2 class="post-title">
+                        {% block headmessage %} {% endblock %}
+                    </h2>
+                    <div class="post-content-preview">
+                        {% block content %} {% endblock %}
+                    </div>
+                    <hr>
+                    <p class="post-meta"> {% include 'footer.html' %} </p>
+                </div>
+
+
+
+
+
+
+
+
+{#    <span id="top" ></span>#}
+{##}
+{#    <div class="container-fluid">#}
+{#        {% include 'header.html' %}#}
+{#        <div class="row">#}
+{#            <div class="col-sm-4 col-md-4">#}
+{#                <div class="panel panel-default">#}
+{#                    <div class="panel-heading">#}
+{#                        <h3>    Skyge的博客   </h3>#}
+{#                    </div>#}
+{#                    <div class="panel-body">#}
+{#                        <div class="list-group">#}
+{#                            <a href="/" class="list-group-item">首页</a>#}
+{#                        </div>#}
+{#                        <div id="header-search-box">#}
+{#                            <a id="search-menu" href="#"><span id="search-icon" class="ion-ios-search-strong"></span></a>#}
+{#                            <div id="search-form" class="search-form">#}
+{#                                <form role="search" method="get" id="searchform" action="{% url 'haystack_search' %}">#}
+{#                                    <input type="search" name="q" placeholder="搜索" required>#}
+{#                                    <button type="submit"><span class="ion-ios-search-strong"></span></button>#}
+{#                                </form>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                        <div class="widget widget-recent-posts">#}
+{#                            <h3 class="widget-title">最新文章</h3>#}
+{#                                {% get_recent_posts as recent_post_list %}#}
+{#                                <ul>#}
+{#                                    {% for post in recent_post_list %}#}
+{#                                    <li>#}
+{#                                        <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>#}
+{#                                    </li>#}
+{#                                    {% empty %}#}
+{#                                        暂无文章！#}
+{#                                    {% endfor %}#}
+{#                                </ul>#}
+{#                        </div>#}
+{#                        <div class="widget widget-archives">#}
+{#                            <h3 class="widget-title">归档</h3>#}
+{#                                {% archives as date_list %}#}
+{#                                <ul>#}
+{#                                    {% for date in date_list %}#}
+{#                                <li>#}
+{#                                    <a href="{% url 'blog:archives' date.year date.month %}">#}
+{#                                        {{ date.year }} 年 {{ date.month }} 月#}
+{##}
+{#                                    </a>#}
+{#                                </li>#}
+{#                                {% empty %}#}
+{#                                    暂无归档！#}
+{#                                {% endfor %}#}
+{#                                </ul>#}
+{#                        </div>#}
+{#                        <div class="widget widget-category">#}
+{#                            <h3 class="widget-title">分类</h3>#}
+{#                                {% get_categories as categories %}#}
+{#                                <ul>#}
+{#                                    {% for category in categories %}#}
+{#                                        <li>#}
+{#                                            <a href="{% url 'blog:category' category.pk %}">#}
+{#                                                {{ category.name }}#}
+{#                                                <span class="post-count">({{ category.num_posts }})</span>#}
+{#                                            </a>#}
+{#                                        </li>#}
+{#                                    {% empty %}#}
+{#                                        暂无分类！#}
+{#                                    {% endfor %}#}
+{#                                </ul>#}
+{#                        </div>#}
+{#                        <div class="widget widget-tag-cloud">#}
+{#                            <h3 class="widget-title">标签云</h3>#}
+{#                                {% get_tags as tag_list %}#}
+{#                                <ul>#}
+{#                                    {% for tag in tag_list %}#}
+{#                                        <li>#}
+{#                                           <a href="{% url 'blog:tag' tag.pk %}">{{ tag.name }}#}
+{#                                               <span class="post-count">({{ tag.num_posts }})</span>#}
+{#                                           </a>#}
+{#                                        </li>#}
+{#                                    {% empty %}#}
+{#                                        暂无标签！#}
+{#                                    {% endfor %}#}
+{#                                </ul>#}
+{#                        </div>#}
+{##}
+{#                        <div class="rss">#}
+{#                            <a href="{% url 'rss' %}">#}
+{#                                <span class="ion-social-rss-outline"></span> RSS 订阅#}
+{#                            </a>#}
+{#                        </div>#}
+{##}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#            <div class="col-sm-8 col-md-8">#}
+{#                <div class="panel panel-default">#}
+{#                        <div>#}
+{#                            {% block main %} {% endblock main %}#}
+{#                        </div>#}
+{#                        <div class="panel-heading">#}
+{#                            {% block headmessage %} {% endblock %}#}
+{#                        </div>#}
+{#                        <div class="panel-body">#}
+{#                            {% block content %} {% endblock %}#}
+{#                        </div>#}
+{#                        <div class="panel-footer">#}
+{#                            {% include 'footer.html' %}#}
+{#                        </div>#}
+{#                    <a href="#top">回到顶部</a><br />#}
+{#                </div>#}
+{#            <div class="actGotop" id="backtop" style="display:block;">#}
+{#                <a href="javascripts:;" title="返回顶部"></a>#}
+{#            </div>#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+
+<!-- jQuery -->
+<script src="/static/js/jquery.min.js "></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/static/js/bootstrap.min.js "></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/static/js/clean-blog.min.js "></script>
+</body>
+</html>

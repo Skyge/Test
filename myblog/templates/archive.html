@@ -1,0 +1,35 @@
+<!--archive.html-->
+{% extends 'base.html' %}
+{% load blog_tags %}
+
+{% block background %}
+<header class="intro-header" style="background-image: url('/static/images/archive.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="site-heading">
+                    <h1>我的征程是星辰大海</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+{% endblock background %}
+
+{% block content %}
+    <div class="widget widget-archives">
+        <h3 class="widget-title">归档</h3>
+        {% archives as date_list %}
+        <ul>
+            {% for date in date_list %}
+                <li>
+                    <a href="{% url 'blog:archives' date.year date.month %}">
+                        {{ date.year }} 年 {{ date.month }} 月
+                    </a>
+                </li>
+            {% empty %}
+                暂无归档！
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}
